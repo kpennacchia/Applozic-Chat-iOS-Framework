@@ -11,6 +11,7 @@
 #import "TSBlurView.h"
 #import "TSMessage.h"
 #import "ALUtilityClass.h"
+#import "ALApplozicSettings.h"
 
 #define TSMessageViewMinimumPadding 15.0
 
@@ -272,7 +273,7 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
             _backgroundBlurView = [[TSBlurView alloc] init];
             self.backgroundBlurView.autoresizingMask = (UIViewAutoresizingFlexibleWidth);
 //            self.backgroundBlurView.blurTintColor = [UIColor colorWithHexString:current[@"backgroundColor"]];
-            self.backgroundBlurView.blurTintColor = [UIColor blackColor];
+            self.backgroundBlurView.blurTintColor = [ALApplozicSettings getNotificationBackgroundColor];
             [self addSubview:self.backgroundBlurView];
         }
 

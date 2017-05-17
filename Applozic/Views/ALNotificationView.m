@@ -187,8 +187,8 @@
     [[TSMessageView appearance] setContentFont:[UIFont systemFontOfSize:13]];
     [[TSMessageView appearance] setTitleFont:[UIFont fontWithName:@"Helvetica Neue" size:18.0]];
     [[TSMessageView appearance] setContentFont:[UIFont fontWithName:@"Helvetica Neue" size:14]];
-    [[TSMessageView appearance] setTitleTextColor:[UIColor whiteColor]];
-    [[TSMessageView appearance] setContentTextColor:[UIColor whiteColor]];
+    [[TSMessageView appearance] setTitleTextColor:[ALApplozicSettings getNotificationTextColor]];
+    [[TSMessageView appearance] setContentTextColor:[ALApplozicSettings getNotificationTextColor]];
     
     
     [TSMessage showNotificationInViewController:top.topViewController

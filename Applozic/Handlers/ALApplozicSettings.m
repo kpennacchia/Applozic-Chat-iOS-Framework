@@ -182,6 +182,28 @@
     return [[NSUserDefaults standardUserDefaults] valueForKey:NOTIFICATION_TITLE];
 }
 
++(void)setNotificationTextColor:(UIColor *)textColor
+{
+	[[NSUserDefaults standardUserDefaults] setValue:textColor forKey:NOTIFICATION_TEXT_COLOR];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(UIColor *)getNotificationTextColor
+{
+	return [[NSUserDefaults standardUserDefaults] valueForKey:NOTIFICATION_TEXT_COLOR];
+}
+
++(void)setNotificationBackgroundColor:(UIColor *)backgroundColor
+{
+	[[NSUserDefaults standardUserDefaults] setValue:backgroundColor forKey:NOTIFICATION_BACKGROUND_COLOR];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(UIColor *)getNotificationBackgroundColor
+{
+	return [[NSUserDefaults standardUserDefaults] valueForKey:NOTIFICATION_BACKGROUND_COLOR];
+}
+
 +(void)setMaxImageSizeForUploadInMB:(NSInteger)maxFileSize
 {
     [[NSUserDefaults standardUserDefaults] setInteger:maxFileSize forKey:IMAGE_UPLOAD_MAX_SIZE];

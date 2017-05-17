@@ -18,6 +18,8 @@
 #define BACK_BUTTON_TITLE @"com.applozic.userdefault.BACK_BUTTON_TITLE"
 #define FONT_FACE @"com.applozic.userdefault.FONT_FACE"
 #define NOTIFICATION_TITLE @"com.applozic.userdefault.NOTIFICATION_TITLE"
+#define NOTIFICATION_TEXT_COLOR @"com.applozic.userdefault.NOTIFICATION_TEXT_COLOR"
+#define NOTIFICATION_BACKGROUND_COLOR @"com.applozic.userdefault.NOTIFICATION_BACKGROUND_COLOR"
 #define IMAGE_COMPRESSION_FACTOR @"com.applozic.userdefault.IMAGE_COMPRESSION_FACTOR"
 #define IMAGE_UPLOAD_MAX_SIZE @"com.applozic.userdefault.IMAGE_UPLOAD_MAX_SIZE"
 #define GROUP_ENABLE @"com.applozic.userdefault.GROUP_ENABLE"
@@ -132,6 +134,14 @@
 +(void)setNotificationTitle:(NSString *)notificationTitle;
 
 +(NSString *)getNotificationTitle;
+
++(void)setNotificationTextColor:(UIColor *)textColor;
+
++(UIColor *)getNotificationTextColor;
+
++(void)setNotificationBackgroundColor:(UIColor *)backgroundColor;
+
++(UIColor *)getNotificationBackgroundColor;
 
 +(void)setMaxImageSizeForUploadInMB:(NSInteger)maxFileSize;
 
