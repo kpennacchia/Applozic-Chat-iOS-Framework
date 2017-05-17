@@ -19,6 +19,7 @@
 
 /** The queued messages (TSMessageView objects) */
 @property (nonatomic, strong) NSMutableArray *messages;
+@property (strong, nonatomic) UIWindow *holdingWindow;
 
 @end
 
@@ -238,12 +239,14 @@ __weak static UIViewController *_defaultViewController;
 //        }
 //    }
     
-    UIWindow * keyWindow = [[UIApplication sharedApplication] keyWindow];
-    keyWindow.opaque=NO;
-    //keyWindow.windowLevel=UIWindowLevelStatusBar+1; //Causes the navigationBar to Hide....
-    [keyWindow addSubview:currentView];
-    [keyWindow bringSubviewToFront:currentView];
-    
+	_holdingWindow = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+	_holdingWindow.backgroundColor = [UIColor clearColor];
+	_holdingWindow.windowLevel = UIWindowLevelAlert;
+	_holdingWindow.opaque = NO;
+	[_holdingWindow makeKeyAndVisible];
+	[_holdingWindow addSubview:currentView];
+	[_holdingWindow bringSubviewToFront:currentView];
+
 
 
     CGPoint toPoint;
@@ -363,6 +366,10 @@ __weak static UIViewController *_defaultViewController;
      } completion:^(BOOL finished)
      {
          [currentView removeFromSuperview];
+
+		 UIWindow *mainAppWindow = currentView.viewController.view.window;
+		 [mainAppWindow makeKeyAndVisible];
+		 _holdingWindow = nil;
          
          if ([self.messages count] > 0)
          {
