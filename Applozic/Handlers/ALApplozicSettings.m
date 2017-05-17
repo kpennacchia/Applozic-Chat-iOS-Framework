@@ -184,24 +184,30 @@
 
 +(void)setNotificationTextColor:(UIColor *)textColor
 {
-	[[NSUserDefaults standardUserDefaults] setValue:textColor forKey:NOTIFICATION_TEXT_COLOR];
+	NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:textColor];
+	[[NSUserDefaults standardUserDefaults] setObject:colorData forKey:NOTIFICATION_TEXT_COLOR];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 +(UIColor *)getNotificationTextColor
 {
-	return [[NSUserDefaults standardUserDefaults] valueForKey:NOTIFICATION_TEXT_COLOR];
+	NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:NOTIFICATION_TEXT_COLOR];
+	UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+	return color;
 }
 
 +(void)setNotificationBackgroundColor:(UIColor *)backgroundColor
 {
-	[[NSUserDefaults standardUserDefaults] setValue:backgroundColor forKey:NOTIFICATION_BACKGROUND_COLOR];
+	NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:backgroundColor];
+	[[NSUserDefaults standardUserDefaults] setObject:colorData forKey:NOTIFICATION_BACKGROUND_COLOR];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 +(UIColor *)getNotificationBackgroundColor
 {
-	return [[NSUserDefaults standardUserDefaults] valueForKey:NOTIFICATION_BACKGROUND_COLOR];
+	NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:NOTIFICATION_BACKGROUND_COLOR];
+	UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+	return color;
 }
 
 +(void)setMaxImageSizeForUploadInMB:(NSInteger)maxFileSize
