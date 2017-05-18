@@ -86,7 +86,12 @@
     return ([self.topViewController isKindOfClass:[ALGroupDetailViewController class]]);
 }
 - (UIViewController*)topViewController {
-    return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+	UIViewController *rootViewController = UIApplication.sharedApplication.delegate.window.rootViewController;
+	if (rootViewController == nil) {
+		rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+	}
+
+	return [self topViewControllerWithRootViewController:rootViewController];
 }
 
 - (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
