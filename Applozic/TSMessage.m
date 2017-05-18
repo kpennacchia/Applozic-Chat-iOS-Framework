@@ -239,11 +239,14 @@ __weak static UIViewController *_defaultViewController;
 //        }
 //    }
     
-	_holdingWindow = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+	CGRect windowFrame = UIScreen.mainScreen.bounds;
+	windowFrame.size.height = 0;
+
+	_holdingWindow = [[UIWindow alloc] initWithFrame:windowFrame];
 	_holdingWindow.backgroundColor = [UIColor clearColor];
 	_holdingWindow.windowLevel = UIWindowLevelAlert;
 	_holdingWindow.opaque = NO;
-	[_holdingWindow makeKeyAndVisible];
+	[_holdingWindow setHidden:NO];
 	[_holdingWindow addSubview:currentView];
 	[_holdingWindow bringSubviewToFront:currentView];
 
@@ -276,7 +279,9 @@ __weak static UIViewController *_defaultViewController;
     {
         [self.delegate customizeMessageView:currentView];
     }
-    
+
+	windowFrame.size.height = currentView.frame.size.height;
+	_holdingWindow.frame = windowFrame;
     
     
     dispatch_block_t animationBlock = ^{
